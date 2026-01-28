@@ -20,3 +20,14 @@ FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+---
+
+ADDITIONAL TERMS:
+
+MODEL NOTICE:
+The pre-trained model (best.pt) is provided for inference and demonstration only.
+Feel free to fine-tune on your own datasets.
+
+ATTRIBUTION:
+If you use this project in your work, please provide appropriate attribution to:
+Md. Zehadul Islam - Vehicle Detection System (2026)
