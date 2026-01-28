@@ -8,11 +8,11 @@
 
 ---
 
-## 📌 Executive Summary
+## 📌 Overview
 
-This is a **complete, production-ready computer vision system** that automatically detects rickshaws (traditional hand-pulled carts from South Asia) in images, live webcam feeds, and video files. Built with **YOLOv8** deep learning and **Streamlit** web framework, it demonstrates a full end-to-end machine learning pipeline from data collection to deployment.
+This is a **complete, production-ready computer vision system** that automatically detects rickshaws in images, live webcam feeds, and video files. Built with **YOLOv8** deep learning and **Streamlit** web framework, it demonstrates a full end-to-end machine learning pipeline from data collection to deployment.
 
-**What Makes This Project Special:**
+**Key Features:**
 - ✅ **Custom Dataset** - 201 meticulously annotated rickshaw images
 - ✅ **Trained Model** - YOLOv8 optimized for rickshaw detection (95% accuracy)
 - ✅ **Three Detection Modes** - Images, Live Webcam, Video Files
@@ -51,40 +51,6 @@ This is a **complete, production-ready computer vision system** that automatical
 </div>
 
 ---
-
-## 🧠 What is Computer Vision & What This Project Does
-
-### Understanding Computer Vision
-
-**Computer Vision** is an AI field that enables computers to "see" and understand images like humans do. It involves:
-
-1. **Image Analysis** - Breaking down visual data into patterns
-2. **Object Detection** - Finding and locating specific objects (in our case, rickshaws)
-3. **Pattern Recognition** - Learning what rickshaws look like from training data
-4. **Real-Time Processing** - Analyzing images/videos at speed
-
-### What Our Rickshaw Detection System Does
-
-```
-INPUT (Image/Video)
-        ↓
-[YOLOv8 Neural Network]
-- Analyzes visual features
-- Detects rickshaw patterns
-- Calculates confidence scores
-        ↓
-OUTPUT (Detected Rickshaws with Boxes)
-- Bounding boxes around rickshaws
-- Confidence scores (0-1)
-- Rickshaw count
-- Processing statistics
-```
-
-**Real-World Applications:**
-- 🚗 **Traffic Analysis** - Monitor vehicle patterns in South Asian cities
-- 📊 **Urban Planning** - Understand rickshaw distribution
-- 🤖 **Autonomous Systems** - Help self-driving vehicles recognize rickshaws
-- 📱 **Smart City Tech** - Integration with traffic management systems
 
 ---
 
@@ -254,6 +220,21 @@ streamlit run app.py
 ---
 
 ## 🔬 Technical Deep Dive
+
+### How Computer Vision Works
+
+**Computer Vision** enables computers to understand and analyze images. This system uses:
+
+1. **Image Analysis** - Breaking down visual data into patterns
+2. **Object Detection** - Locating specific objects (rickshaws) in images
+3. **Pattern Recognition** - Learning features from training data
+4. **Real-Time Processing** - Analyzing images/videos at high speed
+
+**Real-World Applications:**
+- 🚗 **Traffic Analysis** - Monitor vehicle patterns in cities
+- 📊 **Urban Planning** - Understand transportation distribution
+- 🤖 **Autonomous Systems** - Recognize objects for self-driving vehicles
+- 📱 **Smart City Tech** - Integrate with traffic management systems
 
 ### Machine Learning Pipeline
 
