@@ -20,21 +20,3 @@ FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-<!-- ---
-
-ADDITIONAL TERMS:
-
-This project is provided as-is for educational and research purposes.
-
-DATASET NOTICE:
-- The custom dataset (201 rickshaw images) is NOT included in this repository
-- The dataset is proprietary and not available for distribution
-- If you wish to train your own model, please collect and annotate your own dataset
-
-MODEL NOTICE:
-- The pre-trained model (best.pt) is provided for inference and demonstration only
-- Feel free to fine-tune on your own datasets
-
-ATTRIBUTION:
-If you use this project in your work, please provide appropriate attribution to:
-Md. Zehadul Islam - Vehicle Detection System (2026) -->
