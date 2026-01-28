@@ -236,9 +236,110 @@ def run_inference(
     return annotated, count
 
 
-# ============================================================================
-# STREAMLIT UI - HEADER & SIDEBAR
-# ============================================================================
+def process_video(
+    video_path: str,
+    model: YOLO,
+    conf_threshold: float,
+    progress_bar=None,
+    status_text=None,
+) -> Tuple[str, int, int, float]:
+    """
+    Process a video file and detect rickshaws in each frame.
+    
+    Args:
+        video_path: Path to input video file
+        model: Loaded YOLO model
+        conf_threshold: Confidence threshold for detection
+        progress_bar: Streamlit progress bar object
+        status_text: Streamlit status text object
+        
+    Returns:
+        Tuple of (output_video_path, total_frames, total_rickshaws, avg_conf)
+    """
+    # Open input video
+    cap = cv2.VideoCapture(video_path)
+    
+    if not cap.isOpened():
+        raise ValueError("Cannot open video file")
+    
+    # Get video properties
+    frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    
+    # Define video writer
+    output_path = str(PROJECT_DIR / "output_video.mp4")
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
+    
+    frame_count = 0
+    total_rickshaws = 0
+    confidence_sum = 0.0
+    conf_count = 0
+    
+    rickshaw_id = get_rickshaw_class_id(model)
+    names = model.names
+    if isinstance(names, dict):
+        class_names_dict = {int(k): str(v) for k, v in names.items()}
+    else:
+        class_names_dict = {int(i): str(n) for i, n in enumerate(names)}
+    
+    # Process each frame
+    while True:
+        ret, frame = cap.read()
+        
+        if not ret or frame is None:
+            break
+        
+        frame_count += 1
+        
+        # Run inference
+        results = model.predict(source=frame, conf=conf_threshold, verbose=False)
+        
+        if results and len(results) > 0:
+            result = results[0]
+            
+            if result.boxes is not None and len(result.boxes) > 0:
+                boxes = result.boxes
+                boxes_xyxy = boxes.xyxy.cpu().numpy()
+                confidences = boxes.conf.cpu().numpy()
+                class_ids = boxes.cls.cpu().numpy()
+                
+                # Draw boxes and count
+                annotated, rickshaw_count = draw_boxes_and_count(
+                    image=frame,
+                    boxes_xyxy=boxes_xyxy,
+                    confidences=confidences,
+                    class_ids=class_ids,
+                    class_names=class_names_dict,
+                    target_class_id=rickshaw_id,
+                )
+                
+                total_rickshaws += rickshaw_count
+                confidence_sum += np.sum(confidences[class_ids == rickshaw_id] if rickshaw_id is not None else confidences)
+                conf_count += len(confidences)
+                
+                # Write frame to output video
+                out.write(annotated)
+            else:
+                out.write(frame)
+        else:
+            out.write(frame)
+        
+        # Update progress
+        if progress_bar is not None:
+            progress_bar.progress(frame_count / total_frames)
+        if status_text is not None:
+            status_text.text(f"Processing: {frame_count}/{total_frames} frames")
+    
+    # Release resources
+    cap.release()
+    out.release()
+    
+    avg_conf = confidence_sum / conf_count if conf_count > 0 else 0.0
+    
+    return output_path, total_frames, total_rickshaws, avg_conf
 
 # Title and description
 st.title("🚲 Rickshaw Detection System")
@@ -275,7 +376,7 @@ with st.sidebar:
     # Input mode selection
     input_mode = st.radio(
         "Select Input Mode",
-        options=["📸 Upload Image", "🎥 Live Webcam"],
+        options=["📸 Upload Image", "🎥 Live Webcam", "🎬 Video File"],
         index=0,
     )
     
@@ -367,7 +468,7 @@ if input_mode == "📸 Upload Image":
 # MODE 2: LIVE WEBCAM
 # ============================================================================
 
-else:
+elif input_mode == "🎥 Live Webcam":
     st.subheader("🎥 Live Webcam Detection")
     
     # Initialize session state
@@ -451,6 +552,84 @@ else:
             finally:
                 cap.release()
                 st.session_state.webcam_running = False
+
+
+# ============================================================================
+# MODE 3: VIDEO FILE
+# ============================================================================
+
+elif input_mode == "🎬 Video File":
+    st.subheader("🎬 Video File Detection")
+    
+    uploaded_video = st.file_uploader(
+        "Upload a video file",
+        type=["mp4", "avi", "mov", "mkv", "flv", "wmv"],
+        help="Select a video file for rickshaw detection",
+    )
+    
+    if uploaded_video is not None:
+        # Save uploaded video temporarily
+        video_path = PROJECT_DIR / "temp_video.mp4"
+        with open(video_path, "wb") as f:
+            f.write(uploaded_video.getbuffer())
+        
+        st.info(f"📹 Video uploaded: {uploaded_video.name}")
+        
+        # Process button
+        if st.button("🔍 Start Detection", key="video_detect_btn"):
+            with st.spinner("⏳ Processing video... This may take a moment"):
+                try:
+                    progress_bar = st.progress(0)
+                    status_text = st.empty()
+                    
+                    output_path, total_frames, total_rickshaws, avg_conf = process_video(
+                        str(video_path),
+                        model,
+                        confidence_threshold,
+                        progress_bar=progress_bar,
+                        status_text=status_text,
+                    )
+                    
+                    st.success("✅ Video processing completed!")
+                    progress_bar.progress(1.0)
+                    status_text.text(f"Completed: {total_frames}/{total_frames} frames")
+                    
+                    # Display results
+                    st.divider()
+                    
+                    col1, col2, col3, col4 = st.columns(4)
+                    with col1:
+                        st.metric("🎬 Total Frames", total_frames)
+                    with col2:
+                        st.metric("🚲 Total Rickshaws", total_rickshaws)
+                    with col3:
+                        st.metric("📊 Avg Confidence", f"{avg_conf:.2f}" if avg_conf > 0 else "N/A")
+                    with col4:
+                        st.metric("📈 Avg per Frame", f"{total_rickshaws/total_frames:.1f}" if total_frames > 0 else "N/A")
+                    
+                    st.divider()
+                    st.subheader("📥 Download Detected Video")
+                    
+                    # Read output video
+                    with open(output_path, "rb") as video_file:
+                        st.download_button(
+                            label="⬇️ Download Output Video",
+                            data=video_file.read(),
+                            file_name=f"rickshaw_detected_{uploaded_video.name}",
+                            mime="video/mp4",
+                        )
+                    
+                    # Cleanup
+                    if video_path.exists():
+                        video_path.unlink()
+                
+                except Exception as e:
+                    st.error(f"❌ Error processing video: {str(e)}")
+                    if video_path.exists():
+                        video_path.unlink()
+    
+    else:
+        st.info("👆 Upload a video file to start detection")
 
 
 # ============================================================================

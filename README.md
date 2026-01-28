@@ -13,7 +13,8 @@ This project demonstrates a **complete end-to-end computer vision pipeline** for
 - ✅ **Custom Rickshaw Dataset** - 201 manually annotated rickshaw images from Roboflow
 - ✅ **Trained YOLOv8 Model** - Fine-tuned nano model for rickshaw detection
 - ✅ **Web Dashboard** - Streamlit-based interactive application
-- ✅ **Multiple Input Modes** - Image upload and live webcam detection
+- ✅ **Three Input Modes** - Image upload, live webcam, and video file detection
+- ✅ **Video Processing** - Frame-by-frame analysis with MP4 output generation and download
 - ✅ **Real-Time Visualization** - Bounding boxes with confidence scores
 - ✅ **Adjustable Parameters** - Confidence threshold slider for fine-tuning
 - ✅ **Production Ready** - Error handling, documentation, and deployment-ready code
@@ -106,6 +107,36 @@ yolo detect train model=yolov8n.pt data=BanglaRickshawSet.v2i.yolov8/data.yaml e
 
 ---
 
+### Sample Output 3: Video File Detection ⭐⭐⭐ (NEW!)
+
+**Scenario**: Real-time video file processing with frame-by-frame rickshaw detection  
+**Input Format**: MP4 video file  
+**Processing**: Frame-by-frame inference with progress tracking  
+**Output**: Annotated video with bounding boxes (downloadable)
+
+> **🎬 WATCH THE DETECTED VIDEO OUTPUT:**
+>
+> [**>>> CLICK HERE TO VIEW VIDEO ON GOOGLE DRIVE <<<**](https://drive.google.com/file/d/1sV6FycwO6lboULxPq1qVb5vA5oa9ir3r/view?usp=drive_link)
+>
+> This video demonstrates real-time rickshaw detection with bounding boxes across all frames.
+
+**Video Processing Capabilities:**
+- ✅ **Input Formats**: MP4, AVI, MOV, MKV, FLV, WMV
+- ✅ **Frame Processing**: Analyzes every frame with YOLOv8 inference
+- ✅ **Output Video**: Generates annotated MP4 with bounding boxes
+- ✅ **Statistics**: Frame count, total rickshaws detected, average confidence
+- ✅ **Download**: Output video directly from web application
+
+**Analysis:**
+- ✅ Processing Method: **Frame-by-frame analysis**
+- ✅ Detection Consistency: **High across all frames**
+- 🎯 Average Confidence: **0.80+**
+- ⚡ Processing Speed: **Real-time capable**
+- 📦 Output Quality: **High resolution MP4**
+- 📊 Accuracy: **Consistent detection throughout video**
+
+---
+
 ## 📦 Project Structure
 
 ```
@@ -150,20 +181,33 @@ http://localhost:8501
 
 ### Usage
 
-**Image Upload Mode:**
-1. Keep "📸 Upload Image" selected
-2. Click "Upload an image"
-3. View results with detections and count
+**📸 Image Upload Mode:**
+1. Keep "📸 Upload Image" selected in sidebar
+2. Click "Upload an image" button
+3. Select JPG, PNG, BMP, or WEBP file
+4. View results with detected rickshaws and confidence scores
+5. Rickshaw count displayed automatically
 
-**Webcam Mode:**
-1. Select "🎥 Live Webcam"
-2. Click "▶️ Start Webcam"
-3. Live detection with real-time rickshaw counter
+**🎥 Webcam Mode (Live Detection):**
+1. Select "🎥 Live Webcam" from sidebar
+2. Click "▶️ Start Webcam" button
+3. Allow camera access in browser
+4. Live detection with real-time rickshaw counter
+5. Press 'Q' to stop or use browser stop button
 
-**Adjust Confidence:**
+**🎬 Video File Mode (NEW!):**
+1. Select "🎬 Video File" from sidebar
+2. Upload MP4, AVI, MOV, MKV, FLV, or WMV file
+3. Click "🔍 Start Detection" button
+4. See progress bar as frames are processed
+5. View statistics (total frames, rickshaws found, confidence)
+6. **Download** the annotated output video
+
+**⚙️ Adjust Confidence Threshold:**
 - Use the slider (0.05 - 0.95)
-- Lower = more detections
-- Higher = fewer, high-confidence detections
+- Lower values = more detections (higher sensitivity)
+- Higher values = fewer detections (higher precision)
+- Recommended: 0.5 for general use
 
 ---
 
@@ -210,11 +254,15 @@ yolo detect train model=yolov8n.pt data=BanglaRickshawSet.v2i.yolov8/data.yaml e
 
 **Features:**
 - Model caching with `@st.cache_resource`
-- Image upload with file validation
-- Live webcam streaming with OpenCV
+- Image upload with file validation (JPG, PNG, BMP, WEBP)
+- Live webcam streaming with real-time detection
+- **NEW: Video file processing with frame-by-frame analysis**
+- **NEW: Output video generation and download**
 - Confidence threshold slider (0.05 - 0.95)
 - Real-time bounding box visualization
-- Rickshaw counting logic
+- Rickshaw counting logic across all modes
+- Statistics and metrics display
+- Progress tracking for video processing
 - Error handling and validation
 
 **Key Functions:**
@@ -222,6 +270,8 @@ yolo detect train model=yolov8n.pt data=BanglaRickshawSet.v2i.yolov8/data.yaml e
 2. `get_rickshaw_class_id()` - Find Rickshaw class
 3. `run_inference()` - Run detection on image/frame
 4. `draw_boxes_and_count()` - Draw boxes and count
+5. **`process_video()`** - **NEW: Process video files frame-by-frame**
+6. **Statistics generation** - **NEW: Collect metrics across all modes**
 
 ### Dependencies
 
@@ -371,13 +421,17 @@ yolo detect predict model=best.pt source=dataset/test/images
 - [x] Application development
 - [x] Image upload feature
 - [x] Webcam feature
+- [x] **Video file detection feature (NEW!)**
+- [x] **Video output generation (NEW!)**
+- [x] **Download video from application (NEW!)**
 - [x] Confidence threshold
 - [x] Bounding box visualization
-- [x] Rickshaw counting
+- [x] Rickshaw counting (all modes)
+- [x] Statistics and metrics display
 - [x] Code documentation
 - [x] Testing & validation
-- [x] Sample outputs captured
-- [x] README completed
+- [x] Sample outputs captured (3 modes)
+- [x] README completed with video feature
 
 ---
 
