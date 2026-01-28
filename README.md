@@ -631,7 +631,16 @@ By studying this project, you'll understand:
 
 ---
 
-## 👨‍💼 Project Information
+## 👨‍💼 Author & Contact
+
+**Author**: Md. Zehadul Islam  
+**Project**: Vehicle Detection System (Rickshaw Detection)  
+**Purpose**: End-to-End Computer Vision & Machine Learning Application  
+**Date**: January 2026
+
+---
+
+## 📋 Project Information
 
 **Version**: 1.0  
 **Status**: ✅ Production Ready  
