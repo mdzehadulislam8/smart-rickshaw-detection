@@ -1,5 +1,5 @@
-# 🚗 Rickshaw Detection System
-## End-to-End Deep Learning Object Detection Application
+# 🚗 Smart Rickshaw Detection & Urban Traffic Analytics Platform
+## Real-Time YOLOv8 Object Detection System
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
 ![YOLOv8](https://img.shields.io/badge/YOLOv8-Latest-red?logo=yolo&logoColor=white)
@@ -10,17 +10,17 @@
 
 ## 📌 Overview
 
-This is a **complete, production-ready computer vision system** that automatically detects vehicles in images, live webcam feeds, and video files. Built with **YOLOv8** deep learning and **Streamlit** web framework, it demonstrates a full end-to-end machine learning pipeline from data collection to deployment.
+This is a **complete, production-ready computer vision system** for intelligent vehicle detection and counting in urban environments. Built with **YOLOv8** deep learning and **Streamlit** web framework, it demonstrates a comprehensive end-to-end machine learning pipeline from data collection to production deployment.
 
-**Currently trained on rickshaws** - but the architecture and code are generic and can be adapted to detect any vehicle type (cars, buses, motorcycles, etc.) by retraining on your own dataset.
+**Currently trained on rickshaws** - a significant mode of transportation in South Asia. The architecture and code are adaptable and can be fine-tuned for detecting other vehicle types (cars, buses, motorcycles, etc.) by retraining on your own dataset.
 
-**Key Features:**
-- ✅ **Custom Dataset** - 201 meticulously annotated rickshaw images (example)
-- ✅ **Trained Model** - YOLOv8 optimized for object detection (95% accuracy on rickshaws)
-- ✅ **Three Detection Modes** - Images, Live Webcam, Video Files
-- ✅ **Production-Ready** - Error handling, deployment-ready code, comprehensive docs
-- ✅ **Real-Time Performance** - 35-50ms inference on GPU
-- ✅ **Extensible** - Easy to retrain on other vehicle types or objects
+**Key Capabilities:**
+- ✅ **Custom-Trained Model** - Specialized rickshaw detector (95% accuracy)
+- ✅ **Three Detection Modes** - Static Images, Live Webcam Feed, Video File Processing
+- ✅ **Production-Ready** - Comprehensive error handling, deployment-optimized, fully documented
+- ✅ **Real-Time Performance** - 35-50ms inference on GPU (20+ FPS)
+- ✅ **Extensible Architecture** - Easy to retrain on custom datasets for other detection tasks
+- ✅ **Urban Analytics Ready** - Supports traffic analysis, vehicle counting, and monitoring applications
 
 ---
 
@@ -54,6 +54,35 @@ This is a **complete, production-ready computer vision system** that automatical
 </div>
 
 ---
+
+---
+
+## 📦 Dataset Information
+
+⚠️ **IMPORTANT**: The custom rickshaw dataset (201 annotated images) is **NOT publicly available** in this repository.
+
+### Why Dataset is Private:
+- **Quality Assurance**: Carefully curated and annotated dataset maintained for project excellence
+- **Access Control**: Large annotated datasets require proper licensing and usage agreements
+- **Educational Purpose**: Designed for demonstration and learning purposes only
+
+### To Request Dataset Access:
+
+📧 **Contact**: `gg.solve.zehadul999@gmail.com`
+
+**In your email, please include:**
+- Your full name and institution/organization
+- Purpose of usage (research/education/commercial)
+- Brief description of your intended use case
+- Timeline for access needed
+
+**Response Time**: Dataset access requests are typically reviewed within 2-3 business days.
+
+### Alternative: Create Your Own Dataset
+You can train the system on your own custom dataset:
+1. Collect images using [Roboflow](https://roboflow.com/) or other annotation tools
+2. Follow the [Retraining Guide](#-retraining-on-custom-data) section below
+3. Fine-tune the pre-trained model on your data
 
 ---
 
@@ -652,34 +681,61 @@ You can:
 
 See [LICENSE](LICENSE) file for complete terms.
 
-### Dataset & Model
-- **Custom Dataset** (201 rickshaw images) - **Proprietary** ⛔ Not included in repository
-  - For demonstration and educational purposes only
-  - Not available for distribution or commercial use
-  - To use in your own projects: collect and annotate your own dataset using Roboflow
+### Dataset & Models
 
-- **Pre-trained Model** (best.pt) - Provided as-is for inference/demonstration purposes
+#### Custom Dataset (201 Rickshaw Images)
+- **Status**: **PROPRIETARY - NOT PUBLIC** ⛔
+- **Access**: Available upon request only
+- **Contact**: `gg.solve.zehadul999@gmail.com`
+- **Usage**: Demonstration, education, and approved research only
+- **Commercial Use**: Not permitted without explicit written consent
+- **Distribution**: Not allowed - available for personal use only after approval
+- **Alternative**: Create your own dataset using [Roboflow](https://roboflow.com/)
 
-### Attribution
-If you use this project code, please consider citing it:
-```
-@software{vehicle_detection_2026,
+#### Pre-trained Model (best.pt)
+- **Status**: ✅ **Included in repository** (5.95 MB, YOLOv8 Nano)
+- **Format**: PyTorch model (.pt)
+- **Accuracy**: 95% on custom rickshaw dataset
+- **Usage**: Free for inference and demonstrations
+- **Fine-tuning**: Permitted on your custom datasets
+
+### Attribution & Citation
+If you use this project code, please cite it appropriately:
+
+```bibtex
+@software{rickshaw_detection_2026,
   author = {Md. Zehadul Islam},
-  title = {Vehicle Detection System - YOLOv8 Implementation},
+  title = {Smart Rickshaw Detection \& Urban Traffic Analytics Platform},
+  subtitle = {Real-Time YOLOv8 Object Detection System},
   year = {2026},
-  url = {https://github.com/zehadul/vehicle-detection-system}
+  url = {https://github.com/mdzehadulislam8/smart-rickshaw-detection},
+  contact = {gg.solve.zehadul999@gmail.com}
 }
 ```
+
+**Additional Credits:**
+- YOLOv8: [Ultralytics](https://github.com/ultralytics/ultralytics)
+- Streamlit: [Streamlit Inc.](https://streamlit.io/)
+- PyTorch: [Meta AI](https://pytorch.org/)
 
 ---
 
 ## 👨‍💼 Author & Contact
 
 **Author**: Md. Zehadul Islam  
-**Project**: Vehicle Detection System (Rickshaw Detection)  
+**Project**: Smart Rickshaw Detection & Urban Traffic Analytics Platform  
+**Subtitle**: Real-Time YOLOv8 Object Detection System  
 **Purpose**: End-to-End Computer Vision & Machine Learning Application  
+**University**: Green University of Bangladesh  
 **Date**: January 2026  
-**Status**: ✅ Production Ready
+**Status**: ✅ Production Ready  
+
+### 📧 Contact Information
+**Email**: `gg.solve.zehadul999@gmail.com`  
+**GitHub**: [github.com/mdzehadulislam8](https://github.com/mdzehadulislam8)  
+**Repository**: [smart-rickshaw-detection](https://github.com/mdzehadulislam8/smart-rickshaw-detection)  
+
+**For dataset access, collaboration, or inquiries**, please reach out via email.
 
 ---
 
