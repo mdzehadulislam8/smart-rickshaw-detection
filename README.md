@@ -1,5 +1,5 @@
 # Real-Time Rickshaw Detection System for Urban Traffic Analysis
-## Real-Time YOLOv8 Object Detection System
+## Real-Time YOLOv8-Based Object Detection System
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
 ![YOLOv8](https://img.shields.io/badge/YOLOv8-Latest-red?logo=yolo&logoColor=white)
