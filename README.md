@@ -1,4 +1,4 @@
-# Smart Rickshaw Detection & Urban Traffic Analytics Platform
+# Real-Time Rickshaw Detection System for Urban Traffic Analysis
 ## Real-Time YOLOv8 Object Detection System
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
