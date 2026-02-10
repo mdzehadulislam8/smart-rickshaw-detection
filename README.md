@@ -684,13 +684,12 @@ See [LICENSE](LICENSE) file for complete terms.
 ### Dataset & Models
 
 #### Custom Dataset (201 Rickshaw Images)
-- **Status**: **PROPRIETARY - NOT PUBLIC** ⛔
+- **Status**: 🔒 **PROPRIETARY - NOT PUBLIC**
 - **Access**: Available upon request only
-- **Contact**: `gg.solve.zehadul999@gmail.com`
-- **Usage**: Demonstration, education, and approved research only
+- **Purpose**: Academic research, educational projects, and student thesis work
+- **How to Request**: Email `gg.solve.zehadul999@gmail.com` with your name, institution, and intended use
 - **Commercial Use**: Not permitted without explicit written consent
-- **Distribution**: Not allowed - available for personal use only after approval
-- **Alternative**: Create your own dataset using [Roboflow](https://roboflow.com/)
+- **Response Time**: Typically reviewed within 2-3 business days
 
 #### Pre-trained Model (best.pt)
 - **Status**: ✅ **Included in repository** (5.95 MB, YOLOv8 Nano)
