@@ -705,7 +705,7 @@ If you use this project code, please cite it appropriately:
 ```bibtex
 @software{rickshaw_detection_2026,
   author = {Md. Zehadul Islam},
-  title = {Smart Rickshaw Detection \& Urban Traffic Analytics Platform},
+  title = {ReaL Time Rickshaw Detection \& Urban Traffic Analytics Platform},
   subtitle = {Real-Time YOLOv8 Object Detection System},
   year = {2026},
   url = {https://github.com/mdzehadulislam8/smart-rickshaw-detection},
@@ -723,10 +723,9 @@ If you use this project code, please cite it appropriately:
 ## 👨‍💼 Author & Contact
 
 **Author**: Md. Zehadul Islam  
-**Project**: Smart Rickshaw Detection & Urban Traffic Analytics Platform  
+**Project**: Real-Time Rickshaw Detection System for Urban Traffic Analysis  
 **Subtitle**: Real-Time YOLOv8 Object Detection System  
-**Purpose**: End-to-End Computer Vision & Machine Learning Application  
-**University**: Green University of Bangladesh  
+**Purpose**: End-to-End Computer Vision & Machine Learning Application   
 **Date**: January 2026  
 **Status**: ✅ Production Ready  
 
